@@ -1,7 +1,12 @@
 package com.example.rdc;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProviders;
 
+import android.app.Fragment;
+import android.support.v4.*;
 import android.os.Bundle;
 
 /*BASIC IDEA/TODO:
@@ -19,5 +24,7 @@ public class StartActivity extends AppCompatActivity {
         setContentView(R.layout.activity_start);
 
         PlayerStats stats = new PlayerStats("Morgan");
+        PlayerFragment fragment = (PlayerFragment) getFragmentManager().findFragmentByTag("fragment");
+        fragment.linkStats(stats);
     }
 }

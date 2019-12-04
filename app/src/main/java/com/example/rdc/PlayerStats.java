@@ -41,6 +41,7 @@ public class PlayerStats {
         spells.remove(spell);
     }
 
+    //TODO checks if HP is 0
     public int getHp() {
         return hp;
     }

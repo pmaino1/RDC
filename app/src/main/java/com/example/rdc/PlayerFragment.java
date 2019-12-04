@@ -26,22 +26,25 @@ public class PlayerFragment extends Fragment {
     private TextView speedView;
 
 
-    public static PlayerFragment newInstance() {
-        return new PlayerFragment();
-    }
+
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        //TODO: find way to link views from layout in code to update them
-        //hpView =  R.layout.player_fragment.
 
-        return inflater.inflate(R.layout.player_fragment, container, false);
+        View r = inflater.inflate(R.layout.player_fragment, container, false);
+        hpView =  r.findViewById(R.id.hpTextView);
+        mpView =  r.findViewById(R.id.mpTextView);
+        attackView =  r.findViewById(R.id.attackTextView);
+        defenseView =  r.findViewById(R.id.defenseTextView);
+        speedView =  r.findViewById(R.id.speedTextView);
+        return r;
     }
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+
         if(this.stats != null)
             updateStats(this.stats);
     }
@@ -51,11 +54,13 @@ public class PlayerFragment extends Fragment {
     }
 
     public void updateStats(PlayerStats stats) {
-        hpView.setText(stats.getHp());
-        mpView.setText(stats.getMp());
-        attackView.setText(stats.getAttack());
-        defenseView.setText(stats.getDefense());
-        speedView.setText(stats.getSpeed());
+
+
+        hpView.setText("HP: " + stats.getHp());
+        mpView.setText("MP: " + stats.getMp());
+        attackView.setText("Attack: " + stats.getAttack());
+        defenseView.setText("Defense: " + stats.getDefense());
+        speedView.setText("Speed: " + stats.getSpeed());
     }
 
 }

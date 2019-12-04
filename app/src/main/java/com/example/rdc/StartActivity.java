@@ -6,8 +6,10 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import android.app.Fragment;
-import android.support.v4.*;
+
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 
 /*BASIC IDEA/TODO:
 - Dungeon Crawler
@@ -18,13 +20,29 @@ import android.os.Bundle;
 
 public class StartActivity extends AppCompatActivity {
 
+    private PlayerStats stats;
+    private PlayerFragment fragment;
+    private Button startButton;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start);
 
-        PlayerStats stats = new PlayerStats("Morgan");
-        PlayerFragment fragment = (PlayerFragment) getFragmentManager().findFragmentByTag("fragment");
+        stats = new PlayerStats("Morgan");
+        fragment = (PlayerFragment) getFragmentManager().findFragmentById(R.id.fragment);
         fragment.linkStats(stats);
+
+
+        startButton = findViewById(R.id.button);
+        startButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                stats.setHp(stats.getHp() - 1);
+                fragment.updateStats(stats);
+            }
+        });
     }
+
+
 }

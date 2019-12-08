@@ -1,9 +1,10 @@
 package com.example.rdc;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PlayerStats {
+public class PlayerStats implements Serializable {
 
     private String name;
     private int hp;
@@ -39,6 +40,18 @@ public class PlayerStats {
 
     void removeSpell(String spell) {
         spells.remove(spell);
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public List<String> getItems() {
+        return items;
+    }
+
+    public List<String> getSpells() {
+        return spells;
     }
 
     //TODO checks if HP is 0

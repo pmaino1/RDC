@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModelProviders;
 
 import android.app.Fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -29,6 +30,7 @@ public class StartActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start);
 
+
         stats = new PlayerStats("Morgan");
         fragment = (PlayerFragment) getFragmentManager().findFragmentById(R.id.fragment);
         fragment.linkStats(stats);
@@ -38,8 +40,10 @@ public class StartActivity extends AppCompatActivity {
         startButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                stats.setHp(stats.getHp() - 1);
-                fragment.updateStats(stats);
+                Intent intent = new Intent(getApplicationContext(), FirstRoomActivity.class);
+                intent.putExtra("STATS", stats);
+
+                startActivity(intent);
             }
         });
     }

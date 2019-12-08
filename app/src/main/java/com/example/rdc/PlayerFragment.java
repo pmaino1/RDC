@@ -24,6 +24,7 @@ public class PlayerFragment extends Fragment {
     private TextView attackView;
     private TextView defenseView;
     private TextView speedView;
+    private TextView itemView;
 
 
 
@@ -38,6 +39,7 @@ public class PlayerFragment extends Fragment {
         attackView =  r.findViewById(R.id.attackTextView);
         defenseView =  r.findViewById(R.id.defenseTextView);
         speedView =  r.findViewById(R.id.speedTextView);
+        itemView =  r.findViewById(R.id.itemTextView);
         return r;
     }
 
@@ -61,6 +63,13 @@ public class PlayerFragment extends Fragment {
         attackView.setText("Attack: " + stats.getAttack());
         defenseView.setText("Defense: " + stats.getDefense());
         speedView.setText("Speed: " + stats.getSpeed());
+
+        String items = "";
+        for(String item:stats.getItems()) {
+            items += item + "|";
+        }
+
+        itemView.setText("Items: " + items);
     }
 
 }
